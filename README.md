@@ -115,7 +115,7 @@ Bulk Create Domain Users via PowerShell
 1. Log into `DC-1` as `jane_admin`
 2. Open **PowerShell ISE** as Administrator
 3. Create a new script file and paste in the provided user creation script
-4. Run the script to create multiple users
+4. Run the [script](https://github.com/rubentotterman/ad-script/blob/main/script.ps1) to create multiple users
 5. Open **ADUC** and confirm the accounts appear in the `_EMPLOYEES` OU
 6. Attempt to log into `Client-1` using one of the new user accounts  
 > _(Take note of the passwords in the script)_
