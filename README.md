@@ -6,39 +6,39 @@
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
-<h2>Environments and Technologies Used</h2>
+# 🖥️ Active Directory Lab Setup in Azure
 
-- Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
-- Active Directory Domain Services
-- PowerShell
+This guide outlines how to set up a basic Active Directory environment in Azure using two virtual machines: a Domain Controller (`DC-1`) and a Client (`Client-1`), both connected within the same virtual network.
 
-<h2>Operating Systems Used </h2>
+---
 
-- Windows Server 2022
-- Windows 10 (21H2)
+## ✅ Setup Domain Controller (DC-1)
 
-<h2>High-Level Deployment and Configuration Steps</h2>
+1. Create a **Resource Group** in your preferred region.
+2. Create a **Virtual Network** and a **Subnet** (e.g., 10.0.0.0/16 and 10.0.0.0/24).
+3. Create a **Windows Server 2022 VM** named `DC-1` with the following credentials:
+   - **Username:** `labuser`
+   - **Password:** `Cyberlab123!`
+4. After the VM is created, set `DC-1`’s **Private IP address** to **static**.
+5. Log into the `DC-1` VM and **disable the Windows Firewall** (for testing purposes only).
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+---
 
-<h2>Deployment and Configuration Steps</h2>
+## 🧑‍💻 Setup Client VM (Client-1)
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+1. Create a **Windows 10 VM** named `Client-1` using the same credentials:
+   - **Username:** `labuser`
+   - **Password:** `Cyberlab123!`
+2. Attach `Client-1` to the **same region and Virtual Network** as `DC-1`.
+3. Set `Client-1`’s **DNS settings** to the **Private IP address** of `DC-1`.
+4. Restart the `Client-1` VM from the Azure Portal.
+5. Log into `Client-1` and attempt to **ping `DC-1`'s private IP address** to test connectivity.
+6. Open **PowerShell** and run `ipconfig /all` to verify:
+   - Ping to `DC-1` is successful.
+   - DNS server is correctly set to `DC-1`'s private IP.
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+---
+
+> ⚠️ **Important:**  
+> These credentials and settings are for lab/testing use only. Do not use default passwords in production environments.
+
