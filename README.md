@@ -6,13 +6,13 @@
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
-# 🖥️ Active Directory Lab Setup in Azure
+Active Directory Lab Setup in Azure
 
 This guide outlines how to set up a basic Active Directory environment in Azure using two virtual machines: a Domain Controller (`DC-1`) and a Client (`Client-1`), both connected within the same virtual network.
 
 ---
 
-## ✅ Setup Domain Controller (DC-1)
+Setup Domain Controller (DC-1)
 
 1. Create a **Resource Group** in your preferred region.
 2. Create a **Virtual Network** and a **Subnet** (e.g., 10.0.0.0/16 and 10.0.0.0/24).
@@ -24,7 +24,7 @@ This guide outlines how to set up a basic Active Directory environment in Azure 
 
 ---
 
-## 🧑‍💻 Setup Client VM (Client-1)
+Setup Client VM (Client-1)
 
 1. Create a **Windows 10 VM** named `Client-1` using the same credentials:
    - **Username:** `labuser`
@@ -39,14 +39,14 @@ This guide outlines how to set up a basic Active Directory environment in Azure 
 
 ---
 
-> ⚠️ **Important:**  
+> ⚠️Important: 
 > These credentials and settings are for lab/testing use only. Do not use default passwords in production environments.
 
 ---
 
-## 🛠️– Install and Configure Active Directory
+Install and Configure Active Directory
 
-### 🧩 Install Active Directory Domain Services (AD DS)
+Install Active Directory Domain Services (AD DS)
 
 1. Log into `DC-1`
 2. Open **Server Manager**
@@ -54,7 +54,7 @@ This guide outlines how to set up a basic Active Directory environment in Azure 
 4. After installation, click **"Promote this server to a domain controller"**
 5. Select **Add a new forest** and set the domain name as: mydomain.com
 
-> ⚠️ This can be anything – just remember what you use
+> This can be anything – just remember what you use
 6. Set a **Directory Services Restore Mode (DSRM)** password
 7. Complete the wizard and restart the server
 8. Log back in using: mydomain.com\labuser
@@ -62,7 +62,7 @@ This guide outlines how to set up a basic Active Directory environment in Azure 
 
 ---
 
-### 👤 Create a Domain Admin User
+Create a Domain Admin User
 
 1. Open **Active Directory Users and Computers (ADUC)**
 2. Create the following Organizational Units:
@@ -76,11 +76,11 @@ This guide outlines how to set up a basic Active Directory environment in Azure 
 5. Log out and log back in as: mydomain.com\jane_admin
 
 
-> ✅ From this point on, use `jane_admin` as your main admin account.
+> From this point on, use `jane_admin` as your main admin account.
 
 ---
 
-### 🔗 Join Client-1 to the Domain
+Join Client-1 to the Domain
 
 1. Ensure the DNS setting on `Client-1` points to `DC-1`’s private IP (**already done**)
 2. Restart `Client-1` (**already done**)
@@ -94,9 +94,9 @@ _(this will restart the computer)_
 
 ---
 
-## 🧪 Part 2 – User Access & Automation
+Part 2 – User Access & Automation
 
-### 🖥️ Enable Remote Desktop for Domain Users on Client-1
+Enable Remote Desktop for Domain Users on Client-1
 
 1. Start both VMs if they’re off
 2. Log into `Client-1` as: mydomain.com\jane_admin
@@ -106,11 +106,11 @@ _(this will restart the computer)_
 5. Allow access to **Domain Users**
 6. You can now log into `Client-1` as a non-admin domain user
 
-> 🔐 In production, this would typically be done using **Group Policy**.
+> In production, this would typically be done using **Group Policy**.
 
 ---
 
-### 👥 Bulk Create Domain Users via PowerShell
+Bulk Create Domain Users via PowerShell
 
 1. Log into `DC-1` as `jane_admin`
 2. Open **PowerShell ISE** as Administrator
@@ -120,9 +120,7 @@ _(this will restart the computer)_
 6. Attempt to log into `Client-1` using one of the new user accounts  
 > _(Take note of the passwords in the script)_
 
----
 
-> ✅ **Lab Complete!** You've set up a domain, created admin and user accounts, joined a client machine, enabled RDP access, and tested domain logins.
 
 
 
