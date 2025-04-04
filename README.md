@@ -121,6 +121,22 @@ Bulk Create Domain Users via PowerShell
 > _(Take note of the passwords in the script)_
 
 
+## 📸 Creating the Resource Group
+
+![Resource Group](screenshots/vms.png)
+
+---
+
+
+
+![](screenshots/dns.PNG)
+![](screenshots/static.PNG)
+![](screenshots/dns-ping.PNG)
+
+
+
+
+
 
 
 
